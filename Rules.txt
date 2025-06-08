@@ -1,0 +1,45 @@
+Straight-Finding Routine:
+Cards must be sorted by rank
+1. Start at highest card
+2. Scan untill break or straight is found
+	I. If break is found
+		A. Check if there are enough remaining cards for straight. If not, return false
+		B. Start from 2 with next highest card as highest card
+	II. If straight is found
+		A. Construct Play object with slice of cards, starting at highest in straight, ending at lowest
+
+Preliminary construction (can be done lazily):
+Create sorted subhands (WILD, HEARTS, DIAMONDS, CLUBS, SPADES)
+Count each rank
+
+Royal Flush
+1. Start wich aces
+2. Straight Finding routine on each Suit set, ignoring cards less than 10 (Possible implementation: don't continue if there is a break)
+
+Straight Flush:
+Straight Finding Routine on each Suit
+
+Four of a Kind:
+Refer to Count
+
+Full House:
+Refer to count
+
+Flush:
+Check length of Suit subsets
+If multiple valid, sequentially compare each rank.
+
+Straight:
+Straight Finding Routine on WILD Sorted set
+
+Three of a Kind:
+Refer to count
+
+Two Pair:
+Refer to count
+
+Pair:
+Refer to count
+
+High Card:
+First Card in sorted set
