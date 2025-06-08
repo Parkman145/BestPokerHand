@@ -2,6 +2,9 @@
 #define CARDS_H
 
 #include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
 
 struct Card{
     public:
@@ -159,6 +162,19 @@ struct Card{
     private:
         Rank _rank;
         Suit _suit;
+};
+
+Card operator""_card(const char* str, std::size_t n) {}
+
+class Hand{
+    Hand(std::vector<Card> cards) : cards(cards) {
+        std::sort(cards.begin(), cards.end());
+};
+
+
+
+    public:
+        std::vector<Card> cards;
 };
 
 
