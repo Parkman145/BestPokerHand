@@ -76,16 +76,16 @@ struct Card{
             }
             switch(card._suit){
                 case Card::HEARTS:
-                    std::cout << "♥";
+                    os << "H";
                     break;
                 case Card::DIAMONDS:
-                    std::cout << "♦";
+                    os << "D";
                     break;
                 case Card::SPADES:
-                    std::cout << "♠";
+                    os << "S";
                     break;
                 case Card::CLUBS:
-                    std::cout << "♣";
+                    os << "C";
                     break;
             }
 
