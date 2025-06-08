@@ -26,7 +26,7 @@ struct Card{
             SPADES,
             CLUBS
         };
-        Card(Rank rank, Suit suit) : _rank(rank), _suit(suit) {
+        Card(Rank rank, Suit suit) : _rank(rank), _suit(suit) {}
 
         }
         friend std::ostream& operator<<(std::ostream& os, const Card& card){
