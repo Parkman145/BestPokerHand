@@ -2,6 +2,8 @@
 #define CARDS_H
 
 #include <iostream>
+#include <map>
+#include <string>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -29,6 +31,30 @@ struct Card{
             SPADES,
             CLUBS
         };
+
+        inline static const std::map<std::string, Rank> rank_map = {
+                {"2", TWO},
+                {"3", THREE},
+                {"4", FOUR},
+                {"5", FIVE},
+                {"6", SIX},
+                {"7", SEVEN},
+                {"8", EIGHT},
+                {"9", NINE},
+                {"10", TEN},
+                {"J", JACK},
+                {"Q", QUEEN},
+                {"K", KING},
+                {"A", ACE}
+        };
+
+        inline static const std::map<std::string, Suit> suit_map = {
+                {"H", HEARTS},
+                {"D", DIAMONDS},
+                {"S", SPADES},
+                {"C", CLUBS}
+        };
+
         Card(Rank rank, Suit suit) : _rank(rank), _suit(suit) {}
 
         friend std::ostream& operator<<(std::ostream& os, const Card& card){
@@ -159,12 +185,32 @@ struct Card{
         bool operator==(const Card other) { return _rank == other._rank && _suit == other._suit;}
         bool operator<(const Card other) {return _rank < other._rank;}
         
+    friend Card operator""_card(const char* str, std::size_t n);
+
     private:
         Rank _rank;
         Suit _suit;
 };
 
-Card operator""_card(const char* str, std::size_t n) {}
+Card operator""_card(const char* str, std::size_t n) {
+    // What the fuck
+    // Never let bro cook again
+    // No verification, who cares tbh
+    // Maybe I'll implement static checking in the future
+    Card::Rank rank;
+    Card::Suit suit;
+    
+    if (n == 2) {
+        rank = Card::rank_map.at(std::string(1, str[0]));
+        suit = Card::suit_map.at(std::string(1, str[1]));
+    }
+    else if (n == 3) {
+        rank = Card::TEN;
+        suit = Card::suit_map.at(std::string(1, str[2]));
+    }
+
+    return Card(rank, suit);
+}
 
 class Hand{
     Hand(std::vector<Card> cards) : cards(cards) {
