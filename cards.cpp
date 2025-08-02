@@ -1,24 +1,5 @@
 #include "cards.h"
 
-Card operator""_card(const char* str, std::size_t n) {
-    // What the fuck
-    // Never let bro cook again
-    // No verification, who cares tbh
-    // Maybe I'll implement static checking in the future
-    Card::Rank rank;
-    Card::Suit suit;
-    
-    if (n == 2) {
-        rank = Card::rank_map.at(std::string(1, str[0]));
-        suit = Card::suit_map.at(std::string(1, str[1]));
-    }
-    else if (n == 3) {
-        rank = Card::TEN;
-        suit = Card::suit_map.at(std::string(1, str[2]));
-    }
-
-    return Card(rank, suit);
-}
 
 Card::Card(Card::Rank rank, Card::Suit suit) : rank(rank), suit(suit) {}
         
@@ -148,3 +129,24 @@ std::wostream& operator<<(std::wostream& os, const Card& card){
 
 bool Card::operator==(const Card other) { return rank == other.rank && suit == other.suit;}
 bool Card::operator<(const Card other) {return rank < other.rank;}
+
+
+Card operator""_card(const char* str, std::size_t n) {
+    // What the fuck
+    // Never let bro cook again
+    // No verification, who cares tbh
+    // Maybe I'll implement static checking in the future
+    Card::Rank rank;
+    Card::Suit suit;
+    
+    if (n == 2) {
+        rank = Card::rank_map.at(std::string(1, str[0]));
+        suit = Card::suit_map.at(std::string(1, str[1]));
+    }
+    else if (n == 3) {
+        rank = Card::TEN;
+        suit = Card::suit_map.at(std::string(1, str[2]));
+    }
+
+    return Card(rank, suit);
+}
