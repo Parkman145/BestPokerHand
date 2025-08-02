@@ -10,20 +10,20 @@
 
 #include "cards.h"
 
-class Hand{
-    
-    static Hand find_straght(Hand hand);
-    
-    
-    
-    public:
-        Hand() = default;
-        explicit Hand(std::vector<Card> cards) : cards(cards) {
-            std::sort(cards.begin(), cards.end());
-        };
-        std::vector<Card> cards;
-        Hand find_best_hand();
-        Hand get_subhand(Card::Suit suit);
+class Hand
+{
+
+    static Hand find_straight(Hand hand);
+
+public:
+    Hand() = default;
+    explicit Hand(std::vector<Card> cards) : cards(cards)
+    {
+        std::sort(cards.begin(), cards.end());
+    };
+    std::vector<Card> cards;
+    Hand find_best_hand();
+    Hand get_subhand(Card::Suit suit);
 };
 
 #endif
