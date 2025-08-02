@@ -1,6 +1,13 @@
+#include <random>
+
 #include "cards.h"
 
 Card::Card(Card::Rank rank, Card::Suit suit) : rank(rank), suit(suit) {}
+
+Card Card::get_random_card()
+{
+    return Card(Card::Rank(rand() % 13), Card::Suit(rand() % 4));
+}
 
 std::ostream &operator<<(std::ostream &os, const Card &card)
 {

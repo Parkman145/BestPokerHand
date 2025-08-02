@@ -61,6 +61,8 @@ public:
     bool operator==(const Card other);
     bool operator<(const Card other);
 
+    static Card get_random_card();
+
     Rank rank;
     Suit suit;
 };
