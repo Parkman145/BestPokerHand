@@ -35,6 +35,19 @@ public:
         CLUBS
     };
 
+    Card(Rank rank, Suit suit);
+
+    bool operator==(const Card other);
+    bool operator<(const Card other);
+
+    static Card get_random_card();
+
+    Rank rank;
+    Suit suit;
+
+    friend Card operator""_card(const char *str, std::size_t n);
+
+private:
     inline static const std::map<std::string, Rank> rank_map = {
         {"2", TWO},
         {"3", THREE},
@@ -55,16 +68,6 @@ public:
         {"D", DIAMONDS},
         {"S", SPADES},
         {"C", CLUBS}};
-
-    Card(Rank rank, Suit suit);
-
-    bool operator==(const Card other);
-    bool operator<(const Card other);
-
-    static Card get_random_card();
-
-    Rank rank;
-    Suit suit;
 };
 
 std::ostream &operator<<(std::ostream &os, const Card &card);
