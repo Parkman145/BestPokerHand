@@ -36,7 +36,8 @@ public:
     };
 
     Card(Rank rank, Suit suit);
-
+    std::string to_string() const;
+    std::wstring to_string_wide() const;
     bool operator==(const Card other);
     bool operator<(const Card other);
 

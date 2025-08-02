@@ -1,4 +1,5 @@
 #include <random>
+#include <sstream>
 
 #include "cards.h"
 
@@ -9,133 +10,155 @@ Card Card::get_random_card()
     return Card(Card::Rank(rand() % 13), Card::Suit(rand() % 4));
 }
 
-std::ostream &operator<<(std::ostream &os, const Card &card)
+std::string Card::to_string() const
 {
-    switch (card.rank)
+    std::stringstream ss;
+
+    switch (rank)
     {
     case Card::Rank::TWO:
-        os << "2";
+        ss << "2";
         break;
     case Card::Rank::THREE:
-        os << "3";
+        ss << "3";
         break;
     case Card::Rank::FOUR:
-        os << "4";
+        ss << "4";
         break;
     case Card::Rank::FIVE:
-        os << "5";
+        ss << "5";
         break;
     case Card::Rank::SIX:
-        os << "6";
+        ss << "6";
         break;
     case Card::Rank::SEVEN:
-        os << "7";
+        ss << "7";
         break;
     case Card::Rank::EIGHT:
-        os << "8";
+        ss << "8";
         break;
     case Card::Rank::NINE:
-        os << "9";
+        ss << "9";
         break;
     case Card::Rank::TEN:
-        os << "10";
+        ss << "10";
         break;
     case Card::Rank::JACK:
-        os << "J";
+        ss << "J";
         break;
     case Card::Rank::QUEEN:
-        os << "Q";
+        ss << "Q";
         break;
     case Card::Rank::KING:
-        os << "K";
+        ss << "K";
         break;
     case Card::Rank::ACE:
-        os << "A";
+        ss << "A";
         break;
     default:
-        os << "?";
+        ss << "?";
         break;
     }
-    switch (card.suit)
+    switch (suit)
     {
     case Card::HEARTS:
-        os << "H";
+        ss << "H";
         break;
     case Card::DIAMONDS:
-        os << "D";
+        ss << "D";
         break;
     case Card::SPADES:
-        os << "S";
+        ss << "S";
         break;
     case Card::CLUBS:
-        os << "C";
+        ss << "C";
+        break;
+    default:
+        ss << "?";
+    }
+
+    return ss.str();
+}
+
+std::wstring Card::to_string_wide() const
+{
+    std::wstringstream ss;
+
+    switch (rank)
+    {
+    case Card::Rank::TWO:
+        ss << L"2";
+        break;
+    case Card::Rank::THREE:
+        ss << L"3";
+        break;
+    case Card::Rank::FOUR:
+        ss << L"4";
+        break;
+    case Card::Rank::FIVE:
+        ss << L"5";
+        break;
+    case Card::Rank::SIX:
+        ss << L"6";
+        break;
+    case Card::Rank::SEVEN:
+        ss << L"7";
+        break;
+    case Card::Rank::EIGHT:
+        ss << L"8";
+        break;
+    case Card::Rank::NINE:
+        ss << L"9";
+        break;
+    case Card::Rank::TEN:
+        ss << L"10";
+        break;
+    case Card::Rank::JACK:
+        ss << L"J";
+        break;
+    case Card::Rank::QUEEN:
+        ss << L"Q";
+        break;
+    case Card::Rank::KING:
+        ss << L"K";
+        break;
+    case Card::Rank::ACE:
+        ss << L"A";
+        break;
+    default:
+        ss << L"?";
         break;
     }
+    switch (suit)
+    {
+    case Card::HEARTS:
+        ss << L"♥";
+        break;
+    case Card::DIAMONDS:
+        ss << L"♦";
+        break;
+    case Card::SPADES:
+        ss << L"♠";
+        break;
+    case Card::CLUBS:
+        ss << L"♣";
+        break;
+    default:
+        ss << L"?";
+    }
+
+    return ss.str();
+}
+
+std::ostream &operator<<(std::ostream &os, const Card &card)
+{
+    os << card.to_string();
     return os;
 }
 
 std::wostream &operator<<(std::wostream &os, const Card &card)
 {
-    switch (card.rank)
-    {
-    case Card::Rank::TWO:
-        os << "2";
-        break;
-    case Card::Rank::THREE:
-        os << "3";
-        break;
-    case Card::Rank::FOUR:
-        os << "4";
-        break;
-    case Card::Rank::FIVE:
-        os << "5";
-        break;
-    case Card::Rank::SIX:
-        os << "6";
-        break;
-    case Card::Rank::SEVEN:
-        os << "7";
-        break;
-    case Card::Rank::EIGHT:
-        os << "8";
-        break;
-    case Card::Rank::NINE:
-        os << "9";
-        break;
-    case Card::Rank::TEN:
-        os << "10";
-        break;
-    case Card::Rank::JACK:
-        os << "J";
-        break;
-    case Card::Rank::QUEEN:
-        os << "Q";
-        break;
-    case Card::Rank::KING:
-        os << "K";
-        break;
-    case Card::Rank::ACE:
-        os << "A";
-        break;
-    default:
-        os << "?";
-        break;
-    }
-    switch (card.suit)
-    {
-    case Card::HEARTS:
-        os << L"♥";
-        break;
-    case Card::DIAMONDS:
-        os << L"♦";
-        break;
-    case Card::SPADES:
-        os << L"♠";
-        break;
-    case Card::CLUBS:
-        os << L"♣";
-        break;
-    }
+    card.to_string_wide();
     return os;
 }
 
