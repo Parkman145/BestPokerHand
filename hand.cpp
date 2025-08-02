@@ -44,6 +44,18 @@ std::wstring Hand::to_string_wide() const
     return ss.str();
 }
 
+Hand Hand::get_random_hand(int n) {
+    Hand hand;
+    hand.cards.reserve(n);
+
+    for (size_t i = 0; i < n; i++) {
+        hand.cards.push_back(Card::get_random_card());
+    }
+
+    return hand;
+}
+
+
 std::ostream &operator<<(std::ostream &os, const Hand &hand)
 {
     os << hand.to_string();
