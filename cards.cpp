@@ -158,7 +158,7 @@ std::ostream &operator<<(std::ostream &os, const Card &card)
 
 std::wostream &operator<<(std::wostream &os, const Card &card)
 {
-    card.to_string_wide();
+    os << card.to_string_wide();
     return os;
 }
 
