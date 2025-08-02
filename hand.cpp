@@ -15,6 +15,25 @@ Hand Hand::get_subhand(Card::Suit suit)
             subhand.cards.push_back(card);
         }
     }
+
+    return subhand;
+}
+
+Hand Hand::get_subhand(Card::Rank rank)
+{
+    Hand subhand;
+
+    for (Card card : cards)
+    {
+        if (card.rank == rank)
+        {
+            subhand.cards.push_back(card);
+        }
+    }
+
+    return subhand;
+}
+
 std::string Hand::to_string() const
 {
     std::stringstream ss;
@@ -73,4 +92,5 @@ Hand Hand::find_best_hand()
     Hand hearts_hand = get_subhand(Card::HEARTS);
 
     // Royal Flush
+    return Hand{};
 }

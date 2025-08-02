@@ -24,6 +24,8 @@ public:
     std::vector<Card> cards;
     Hand find_best_hand();
     Hand get_subhand(Card::Suit suit);
+    Hand get_subhand(Card::Rank rank);
+
     static Hand get_random_hand(int n = 8);
 
     std::string to_string() const;
