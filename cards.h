@@ -63,12 +63,14 @@ struct Card{
         bool operator==(const Card other); 
         bool operator<(const Card other); 
         
-    friend Card operator""_card(const char* str, std::size_t n);
     Rank rank;
     Suit suit;
 };
 
+std::ostream& operator<<(std::ostream& os, const Card& card);
+std::wostream& operator<<(std::wostream& os, const Card& card);
 
+Card operator""_card(const char* str, std::size_t n);
 
 
 
