@@ -24,6 +24,12 @@ public:
     std::vector<Card> cards;
     Hand find_best_hand();
     Hand get_subhand(Card::Suit suit);
+
+    std::string to_string() const;
+    std::wstring to_string_wide() const;
 };
+
+std::ostream &operator<<(std::ostream &os, const Hand &hand);
+std::wostream &operator<<(std::wostream &os, const Hand &hand);
 
 #endif
