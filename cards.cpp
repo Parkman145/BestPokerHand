@@ -16,33 +16,6 @@ std::string Card::to_string() const
 
     switch (rank)
     {
-    case Card::Rank::TWO:
-        ss << "2";
-        break;
-    case Card::Rank::THREE:
-        ss << "3";
-        break;
-    case Card::Rank::FOUR:
-        ss << "4";
-        break;
-    case Card::Rank::FIVE:
-        ss << "5";
-        break;
-    case Card::Rank::SIX:
-        ss << "6";
-        break;
-    case Card::Rank::SEVEN:
-        ss << "7";
-        break;
-    case Card::Rank::EIGHT:
-        ss << "8";
-        break;
-    case Card::Rank::NINE:
-        ss << "9";
-        break;
-    case Card::Rank::TEN:
-        ss << "10";
-        break;
     case Card::Rank::JACK:
         ss << "J";
         break;
@@ -56,7 +29,7 @@ std::string Card::to_string() const
         ss << "A";
         break;
     default:
-        ss << "?";
+        ss << 2 + rank;
         break;
     }
     switch (suit)
@@ -86,33 +59,6 @@ std::wstring Card::to_string_wide() const
 
     switch (rank)
     {
-    case Card::Rank::TWO:
-        ss << L"2";
-        break;
-    case Card::Rank::THREE:
-        ss << L"3";
-        break;
-    case Card::Rank::FOUR:
-        ss << L"4";
-        break;
-    case Card::Rank::FIVE:
-        ss << L"5";
-        break;
-    case Card::Rank::SIX:
-        ss << L"6";
-        break;
-    case Card::Rank::SEVEN:
-        ss << L"7";
-        break;
-    case Card::Rank::EIGHT:
-        ss << L"8";
-        break;
-    case Card::Rank::NINE:
-        ss << L"9";
-        break;
-    case Card::Rank::TEN:
-        ss << L"10";
-        break;
     case Card::Rank::JACK:
         ss << L"J";
         break;
@@ -126,7 +72,7 @@ std::wstring Card::to_string_wide() const
         ss << L"A";
         break;
     default:
-        ss << L"?";
+        ss << 2 + rank;
         break;
     }
     switch (suit)
