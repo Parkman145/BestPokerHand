@@ -1,4 +1,4 @@
-source_files = main.cpp cards.cpp hand.cpp
+source_files = main.cpp cards.cpp hand.cpp hand_algo.cpp
 header_files = cards.h hand.h
 
 build : a.exe
